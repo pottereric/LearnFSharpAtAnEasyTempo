@@ -2,10 +2,23 @@
 
 type usersData = CsvProvider< @"user_data.csv" >
 
-let myUsers = usersData.GetSample()
-let first = myUsers.Rows |> Seq.head
+let printUser (user : usersData.Row) = 
+    printfn $"%s{user.FirstName} %s{user.LastName}"
 
-printfn $"%s{first.FirstName} %s{first.LastName}"
+let printFirstUser (myUsers : usersData) =
+    myUsers.Rows 
+    |> Seq.head
+    |> printUser
+
+let printUserThatCompletedCourses (myUsers : usersData) =
+    myUsers.Rows
+    |> Seq.filter (fun u -> u.TotalHours > 0.0M)
+    |> Seq.iter (fun u -> printUser u)
+
+let myUsers = usersData.GetSample()
+
+//printFirstUser myUsers
+printUserThatCompletedCourses myUsers
 
 System.Console.ReadKey() |> ignore
 
