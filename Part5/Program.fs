@@ -2,6 +2,12 @@
 
 type usersData = CsvProvider< @"user_data.csv" >
 
+
+let printOptionalUser(user : usersData.Row option) =
+    match user with
+    | Some(u) -> u.FirstName
+    | None -> "not found"
+
 let printUser (user : usersData.Row) = 
     printfn $"%s{user.FirstName} %s{user.LastName}"
 
