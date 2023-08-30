@@ -4,17 +4,13 @@ let testUrl3 = "https://www.google.com/search?q=bbq"
 let testUrl4 = "http://www.aol.com"
 
 let removeHttpsIfNeccessary (url : string) =
-    if (url.StartsWith("https://")) then
-        url.Substring(8)
-    else 
-        url
+    if (url.StartsWith("https://")) then url.Substring(8)
+    else url
 
 let removeHttpIfNeccessary (url : string) =
-    if (url.StartsWith("http://")) then
-        url.Substring(7)
-    else 
-        url
-
+    if (url.StartsWith("http://")) then url.Substring(7)
+    else url
+    
 let removeQueryString (url : string) =
     if(url.Contains('?')) then
         let index = url.IndexOf('?')

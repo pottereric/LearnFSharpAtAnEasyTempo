@@ -1,1 +1,1 @@
-printfn "Hello KCDC";
+printfn "Hello CodeMash"
